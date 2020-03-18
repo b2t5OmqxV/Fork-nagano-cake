@@ -1,0 +1,26 @@
+<h1>商品登録画面</h1>
+
+	<%= form_for(@product) do |f| %>
+		<% if @product.errors.any? %>
+        	<div id="error_explanation">
+            	<h2><%= @product.errors.count %>件のエラーが発生しました。</h2>
+              	<ul>
+                	<% @product.errors.full_messages.each do |message| %>
+                		<li><%= message %></li>
+                	<% end %>
+             	</ul>
+            </div>
+        <% end %>
+		<%= f.attachment_field :image %>
+		<h4>商品名</h4>
+		<%= f.text_field :name %>
+		<h4>商品説明</h4>
+		<%= f.text_area :description %>
+		<h4>ジャンル</h4>
+		<%= f.collection_select :genre_id, Genre.all, :id, :name %>
+		<h4>税抜価格</h4>
+		<%= f.text_field :price %>
+		<h4>販売ステータス</h4>
+		<%= f.select :is_soldout, [[‘売切れ’, true], [‘販売中’,false]],{}, :class => ‘item__f-select’ %>
+		<%= f.submit "新規登録", class:"btn btn-primary btn-block" %>
+		<% end %>
