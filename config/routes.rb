@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+
+# scope module: 'end_user' do
+  devise_for :end_users
+  # , controllers: {
+  #     sessions: 'end_user/end_users/sessions',
+  #     registrations: 'end_user/end_users/registrations',
+  #     passwords: 'end_user/end_users/passwords'
+  #   }
+  # end
+
+
+
+
 	root "products#top"
 
 	resource :end_users, only: [:edit, :update]
