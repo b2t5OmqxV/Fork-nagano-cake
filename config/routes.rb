@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+
+# scope module: 'end_user' do
+  devise_for :end_users
+  # , controllers: {
+  #     sessions: 'end_user/end_users/sessions',
+  #     registrations: 'end_user/end_users/registrations',
+  #     passwords: 'end_user/end_users/passwords'
+  #   }
+  # end
+
+
+
+
 	root "products#top"
 
 	resource :end_users, only: [:edit, :update]
@@ -18,6 +31,13 @@ Rails.application.routes.draw do
 	get "thanks" => "orders#thanks"
 
 	resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+
+ 	devise_for :admins, skip: :all
+ 	devise_scope :admins do
+    get "admins/sign_in" => "admins/sessions#new", as: "new_admin_session"
+    post "admins/sign_in" => "admins/sessions#create", as: "admin_session"
+    delete "admins/sign_out" => "admins/sessions#destroy", as: "destroy_admin_session"
+  end
 
 	namespace :admin do
 		get "top" => "orders#top"
