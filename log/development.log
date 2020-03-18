@@ -925,3 +925,15 @@ Processing by Devise::RegistrationsController#new as HTML
 Completed 200 OK in 138ms (Views: 137.1ms | ActiveRecord: 0.0ms)
 
 
+Completed 200 OK in 667ms (Views: 635.4ms | ActiveRecord: 2.1ms)
+
+
+egistrations/new.html.erb within layouts/application (29.7ms)
+sion" ASC[0m
+                                                                                                                                                                                                                                                                                                                                                                                                                                           ts/application
+  Rendered /var/lib/gems/2.5.0/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (0.5ms)
+  Rendered /var/lib/gems/2.5.0/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /var/lib/gems/2.5.0/gems/devise-4.7.1/app/views/devise/registrations/new.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 667ms (Views: 635.4ms | ActiveRecord: 2.1ms)
+
+
