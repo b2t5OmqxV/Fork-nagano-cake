@@ -1,9 +1,9 @@
 <h1>商品登録画面</h1>
 
 	<%= form_for(@product) do |f| %>
-		<% if @post_image.errors.any? %>
+		<% if @product.errors.any? %>
         	<div id="error_explanation">
-            	<h2><%= @post_image.errors.count %>件のエラーが発生しました。</h2>
+            	<h2><%= @product.errors.count %>件のエラーが発生しました。</h2>
               	<ul>
                 	<% @product.errors.full_messages.each do |message| %>
                 		<li><%= message %></li>
@@ -23,3 +23,4 @@
 		<h4>販売ステータス</h4>
 		<%= f.select :is_soldout, [[‘売切れ’, true], [‘販売中’,false]],{}, :class => ‘item__f-select’ %>
 		<%= f.submit "新規登録", class:"btn btn-primary btn-block" %>
+		<% end %>

@@ -12,5 +12,10 @@ class Admin::ProductsController < ApplicationController
 			render :new
 		end
 	end
-end
 
+
+	private
+	def product_params
+		params.require(:product).permit(:image, :name, :description, :genre_id, :price, :is_soldout)
+	end
+end
