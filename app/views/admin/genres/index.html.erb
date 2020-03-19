@@ -22,6 +22,7 @@
     		<tr>
     			<th>ジャンル</th>
     			<th>状態</th>
+                <th></th>
     		</tr>
     	</thead>
     	<tbody>
@@ -33,6 +34,7 @@
     					<% else %>
     					<td>有効</td>
     					<% end %>
+                        <td><%= link_to "編集する", edit_admin_genre_path(genre) %></td>
     			</tr>
     		<% end %>
     	</tbody>
