@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 # scope module: 'end_user' do
   devise_for :end_users
   # , controllers: {
-  #     sessions: 'end_user/end_users/sessions',
+  #     sessions: 'end_users/sessions',
   #     registrations: 'end_user/end_users/registrations',
   #     passwords: 'end_user/end_users/passwords'
   #   }
@@ -43,3 +43,4 @@ Rails.application.routes.draw do
 	end
 
 end
+
