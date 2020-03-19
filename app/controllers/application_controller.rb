@@ -1,16 +1,14 @@
 class ApplicationController < ActionController::Base
-	
 
 
-	# def after_sign_in_path_for(resource)
- #    new_end_user_session_path
- #      case resource
- #      when EndUser
- #        new_end_user_session_path
- #      when admin
- #        admin_root_path
-      # end
- #  end
+	def after_sign_in_path_for(resource)
+      case resource
+      when EndUser
+      	root_path
+      when Admin
+         admin_top_path
+      end
+  end
 
 before_action :configure_permitted_parameters, if: :devise_controller?
 
