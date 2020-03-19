@@ -3,6 +3,6 @@
 <% genres.each do |genre| %>
 
 	<%= link_to ({controller: 'end_users/products', action: 'index', id: genre.id }) do %>
-	 <%= genre name %>
+	 <%= genre.name %>
 	<% end %>
 <% end %>
