@@ -2,8 +2,9 @@ class EndUsers::ProductsController < ApplicationController
 
 	def index
 		@genres = Genre.all
-		if @genre = Genre.find(params[:id])
-		@products = Genre.product.all
+		if params[:id]
+		@genre = Genre.find(params[:id])
+		@products = @genre.products.all
 		else
 		@products = Product.all
 		end
