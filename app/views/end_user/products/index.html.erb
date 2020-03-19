@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+
+		<div class="col-xs-3"></div>
+		<div class="col-xs-9">
+				<h1><%= @genre.name %>一覧</h1>
+				<h2>全<%= @products.count %> 件</h2>
+
+					<% @products.each do |product| %>
+						<%= attachment_image_tag(product, :image, :fill, 50, 50) %>
+						<h3><%= product.name %></h3>
+						<h3>¥<%= product.price %></h3>
+					<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
