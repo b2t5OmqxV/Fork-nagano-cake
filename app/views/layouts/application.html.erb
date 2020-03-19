@@ -18,11 +18,11 @@
         <li><%= link_to "商品一覧",admin_products_path %></li>
         <li><%= link_to "会員一覧",admin_end_users_path %></li>
         <li><%= link_to "注文履歴一覧",admin_orders_path %></li>
-        <li><%= link_to "ジャンル管理一覧",admin_genre %></li>
-        <li><%= link_to "ログアウト",destroy_admin_session, method: :delete %></li>
+        <li><%= link_to "ジャンル管理一覧",admin_genre_path %></li>
+        <li><%= link_to "ログアウト",destroy_admin_session_path, method: :delete %></li>
       </ul>
       <% else %>
-        <li><%= link_to "ログイン",new_admin_session %></li>
+        <li><%= link_to "ログイン",new_admin_session_path %></li>
       <% end %>
     <% else %>
       <% if end_user_signed_in? %>
