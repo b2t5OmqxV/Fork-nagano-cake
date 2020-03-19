@@ -1,0 +1,27 @@
+<h1>商品　編集画面</h1>
+
+	<%= form_for(@product, url: admin_product_path) do |f| %>
+		<% if @product.errors.any? %>
+        	<div id="error_explanation">
+            	<h2><%= @product.errors.count %>件のエラーが発生しました。</h2>
+              	<ul>
+                	<% @product.errors.full_messages.each do |message| %>
+                		<li><%= message %></li>
+                	<% end %>
+             	</ul>
+            </div>
+        <% end %>
+        <%= attachment_image_tag @product, :image, :fill, 100, 100, format: "jpeg" %>
+		<%= f.attachment_field :image %>
+		<h4>商品名</h4>
+		<%= f.text_field :name %>
+		<h4>商品説明</h4>
+		<%= f.text_area :description %>
+		<h4>ジャンル</h4>
+		<%= f.collection_select :genre_id, Genre.all, :id, :name %>
+		<h4>税抜価格</h4>
+		<%= f.text_field :price %>
+		<h4>販売ステータス</h4>
+		<%= f.select :is_soldout, [["売切れ", true], ["販売中",false]] %>
+		<%= f.submit "変更を保存", class:"btn btn-primary btn-block" %>
+	<% end %>
