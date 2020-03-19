@@ -1,0 +1,8 @@
+<h1>ジャンル検索</h1>
+
+<% genres.each do |genre| %>
+
+	<%= link_to ({controller: 'end_users/products', action: 'index', id: genre.id }) do %>
+	 <%= genre name %>
+	<% end %>
+<% end %>
