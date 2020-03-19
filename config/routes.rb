@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-# scope module: 'end_user' do
+  # scope module: 'end_user' do
   devise_for :end_users
   # , controllers: {
   #     sessions: 'end_user/end_users/sessions',
@@ -10,24 +10,29 @@ Rails.application.routes.draw do
   #   }
   # end
 
-	root "products#top"
 
-	resource :end_users, only: [:edit, :update]
-	get "my_page" => "end_users#my_page"
-	get "check" => "end_users#check"
-	post "unsubscribed" => "end_users#unsubscribed"
 
-	resources :products, only: [:index, :show]
+  	scope module: :end_users do
+		root "products#top"
 
-	resources :cart_products, only: [:index, :create, :destroy]
-	delete "cart_products" => "cart_products#clear"
+		resource :end_users, only: [:edit, :update]
+		get "my_page" => "end_users#my_page"
+		get "check" => "end_users#check"
+		post "unsubscribed" => "end_users#unsubscribed"
 
-	resources :orders, only: [:index, :show, :create]
-	get "input" => "orders#input"
-	get "check" => "orders#check"
-	get "thanks" => "orders#thanks"
+		resources :products, only: [:index, :show]
 
-	resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+		resources :cart_products, only: [:index, :create, :destroy]
+		delete "cart_products" => "cart_products#clear"
+
+		resources :orders, only: [:index, :show, :create]
+		get "input" => "orders#input"
+		get "check" => "orders#check"
+		get "thanks" => "orders#thanks"
+
+		resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+	end
+
 
  	devise_for :admins, skip: :all
  	devise_scope :admin do
