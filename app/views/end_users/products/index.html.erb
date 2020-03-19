@@ -11,6 +11,7 @@
 						<%= attachment_image_tag(product, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
 						<h3><%= product.name %></h3>
 						<h3>¥<%= product.price %></h3>
+					<% end %>
 			<% else %>
 				<h1>商品一覧</h1>
 				<h2>全<%= ＠products.count %>件</h2>
@@ -19,6 +20,7 @@
 						<%= attachment_image_tag(product, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
 						<h3><%= product.name %></h3>
 						<h3>¥<%= product.price %></h3>
+					<% end %>
 			<% end %>
 		</div>
 	</div>
