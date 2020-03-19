@@ -35,10 +35,10 @@ Rails.application.routes.draw do
 
 
  	devise_for :admins, skip: :all
- 	devise_scope :admins do
-    get "admins/sign_in" => "admins/sessions#new", as: "new_admin_session"
-    post "admins/sign_in" => "admins/sessions#create", as: "admin_session"
-    delete "admins/sign_out" => "admins/sessions#destroy", as: "destroy_admin_session"
+ 	devise_scope :admin do
+    get "admin/sign_in" => "admins/sessions#new", as: "new_admin_session"
+    post "admin/sign_in" => "admins/sessions#create", as: "admin_session"
+    delete "admin/sign_out" => "admins/sessions#destroy", as: "destroy_admin_session"
   end
 
 	namespace :admin do
