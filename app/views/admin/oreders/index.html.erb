@@ -11,16 +11,16 @@
   	  </tr>
   	</thead>
   	<tbody>
-  		  <% @oreders.each do |oreder| %>
+  		  <% @orders.each do |order| %>
   		<tr>
   			<th>
-          <%= link_to admin_order_path(oreder.id) do %>
-          <%= oreder.created_at strftime ("%Y-%m-%d %H:%M:%S") %>
+          <%= link_to admin_order_path(order.id) do %>
+          <%= order.created_at strftime ("%Y-%m-%d %H:%M:%S") %>
           <% end %>
-          </th>
-  			<th><%= oreder.end_user.family_name + oreder.end_user.family_name %></th>
-  			<th><%= oreder.end_user.oreder_products.quantity.count %></th>
-  			<th><%= oreder.order_status %></th>
+        </th>
+  			<th><%= order.end_user.family_name + order.end_user.family_name %></th>
+  			<th><%= order.end_user.order_products.quantity.count %></th>
+  			<th><%= order.order_status %></th>
   		</tr>
   		<% end %>
   	</tbody>
