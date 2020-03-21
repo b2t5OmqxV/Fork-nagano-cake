@@ -14,21 +14,8 @@ class EndUsers::ProductsController < ApplicationController
 		@genres = Genre.all
 		@product = Product.find(params[:id])
 		@product_new = CartProduct.new
+		@end_user = EndUser.find(current_end_user.id)
 	end
-
-	def create
-		@product = CartProduct.new(product_params)
-		@product.save
-		redirect_to cart_products_path
-	end
-
-
-
-	private
-	def cart_product_params
-		params.require(:cart_product).permit(:quantity, :product_id, :end_user_id)
-	end
-
 end
 
 
