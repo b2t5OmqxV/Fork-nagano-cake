@@ -1,6 +1,8 @@
-class OrdersController < ApplicationController
+class EndUsers::OrdersController < ApplicationController
 
-	def thanks
+	def input
+		@order = Order.new
+		@end_user = EndUser.find(current_end_user.id)
 	end
 
 end

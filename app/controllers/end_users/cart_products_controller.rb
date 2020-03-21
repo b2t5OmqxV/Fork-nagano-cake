@@ -6,8 +6,14 @@ class EndUsers::CartProductsController < ApplicationController
 
 	def create
 		@product = CartProduct.new(cart_product_params)
-		@product.save!
+		@product.save
 		redirect_to cart_products_path
+	end
+
+	def update
+		cart_product = CartProduct.find(params[:id])
+		cart_product.update(cart_product_params)
+		redirect_to request.referer
 	end
 
 	def destroy

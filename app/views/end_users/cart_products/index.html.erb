@@ -11,6 +11,7 @@
 			</tr>
 		</thead>
 		<tbody>
+			<% sum = 0 %>
 			<% @end_user.cart_products.each do |cart_product|%>
 				<tr>
 					<td><%= attachment_image_tag cart_product.product, :image, :fill, 100, 100, format: "jpeg" %><%= cart_product.product.name %></td>
@@ -29,9 +30,14 @@
 							<%= f.text_field :quantity %>
 							<%= f.submit "変更", class:"btn btn-primary" %>
 						<% end %></td>
-					<td><%= cart_product.product.price * cart_product.quantity %></td>
+						<% sub_total = cart_product.product.price * cart_product.quantity %>
+						<% sum += sub_total %>
+					<td><%= sub_total %></td>
 					<td><%= link_to "削除する", cart_product_path(cart_product), method: :delete %></td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
+	<%= link_to "買い物を続ける", products_path %>
+	<p>合計金額 <%= sum %></p>
+	<%= link_to "情報入力に進む",input_path, class:"btn btn-primary" %>
