@@ -1,4 +1,4 @@
-class EndUsersController < ApplicationControlle
+class EndUsersController < ApplicationController
 
 	def my_pages 
 		@end_user = EndUser.find(params[:id])
