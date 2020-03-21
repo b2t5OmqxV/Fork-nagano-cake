@@ -5,11 +5,10 @@ Rails.application.routes.draw do
 
 
 
-
 devise_for :end_users, controllers: {
-      sessions: 'end_users/end_users/sessions',
-      registrations: 'end_users/end_users/registrations',
-      passwords: 'end_users/end_users/passwords'
+      sessions: "end_users/end_users/sessions",
+      registrations: "end_users/end_users/registrations",
+      passwords: "end_users/end_users/passwords"
     }
   	scope module: :end_users do
 		root "products#top"
@@ -28,6 +27,7 @@ devise_for :end_users, controllers: {
 		get "input" => "orders#input"
 		get "check" => "orders#check"
 		get "thanks" => "orders#thanks"
+
 
 		resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 	end
