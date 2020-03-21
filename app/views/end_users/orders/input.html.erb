@@ -1,13 +1,24 @@
 <h1>情報入力</h1>
 
-<%= form_for(@genre, url: admin_genres_path) do |f| %>
-		<% if @genre.errors.any? %>
+<%= form_with model: @order, url: orders_path ,local: true do |f| %>
+		<% if @order.errors.any? %>
         	<div id="error_explanation">
-            	<h2><%= @genre.errors.count %>件のエラーが発生しました。</h2>
+            	<h2><%= @order.errors.count %>件のエラーが発生しました。</h2>
               	<ul>
-                	<% @genre.errors.full_messages.each do |message| %>
+                	<% @order.errors.full_messages.each do |message| %>
                 		<li><%= message %></li>
                 	<% end %>
              	</ul>
             </div>
         <% end %>
+        <h4>支払い方法</h4>
+        <label><%= f.radio_button :payment_method, :credit_card %>クレジットカード</label>
+        <label><%= f.radio_button :payment_method, :bank_transfer %>銀行振込</label>
+        <h4>お届け先</h4>
+        <label><%= f.radio_button :address_select, 1 %>ご自身の住所</label>
+        	<%= @end_user.zip_code%> <%=  @end_user.address %> <%= str = @end_user.family_name << @end_user.first_name %>
+        <label><%= f.radio_button :address_select, 2 %>登録済住所から選択</label>
+        	<%= f.collection_select :address_id, @end_user.shipping_addresses, :id,:zip_code %>
+
+        <%= f.submit "新規登録", class:"btn btn-primary btn-block" %>
+<% end %>
