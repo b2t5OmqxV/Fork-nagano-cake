@@ -1,0 +1,13 @@
+<h1>情報入力</h1>
+
+<%= form_for(@genre, url: admin_genres_path) do |f| %>
+		<% if @genre.errors.any? %>
+        	<div id="error_explanation">
+            	<h2><%= @genre.errors.count %>件のエラーが発生しました。</h2>
+              	<ul>
+                	<% @genre.errors.full_messages.each do |message| %>
+                		<li><%= message %></li>
+                	<% end %>
+             	</ul>
+            </div>
+        <% end %>
