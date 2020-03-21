@@ -1,7 +1,7 @@
-class EndUsersController < ApplicationController
+class EndUsers::EndUsersController < ApplicationController
 
-	def my_pages 
-		@end_user = EndUser.find(params[:id])
+	def my_page
+		# @end_user = EndUser.find(params[:id])
 	end
 
 	def edit 
