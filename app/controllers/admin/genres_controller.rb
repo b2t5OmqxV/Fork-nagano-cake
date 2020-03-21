@@ -8,7 +8,7 @@ class Admin::GenresController < ApplicationController
 	def create
 		@genre = Genre.new(genre_params)
 		if @genre.save
-			redirect_to admin_products
+			redirect_to request.referer
 		else
 			render :index
 		end

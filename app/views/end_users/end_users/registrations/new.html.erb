@@ -44,15 +44,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :"パスワード(6文字以上)" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %>　
+    <%= f.label :"パスワード(6文字以上)" %>　
+    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
     <%= f.label :"パスワード確認用" %>
-    <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
