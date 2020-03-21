@@ -1,5 +1,14 @@
 class EndUsers::ProductsController < ApplicationController
 
+	def top
+	   @genres = Genre.all
+	   @products = Product.all
+    end
+
+
+
+
+
 	def index
 		@genres = Genre.all
 		if params[:id]
