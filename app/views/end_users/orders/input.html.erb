@@ -15,10 +15,16 @@
         <label><%= f.radio_button :payment_method, :credit_card %>クレジットカード</label>
         <label><%= f.radio_button :payment_method, :bank_transfer %>銀行振込</label>
         <h4>お届け先</h4>
-        <label><%= f.radio_button :address_select, 1 %>ご自身の住所</label>
-        	<%= @end_user.zip_code%> <%=  @end_user.address %> <%= str = @end_user.family_name << @end_user.first_name %>
-        <label><%= f.radio_button :address_select, 2 %>登録済住所から選択</label>
-        	<%= f.collection_select :address_id, @end_user.shipping_addresses, :id,:zip_code %>
-
-        <%= f.submit "新規登録", class:"btn btn-primary btn-block" %>
+        <label><%= f.radio_button :address_select, 1 %>ご自身の住所</label><br>
+        	<%= @end_user.zip_code%> <%=  @end_user.address %> <%= str = @end_user.family_name << @end_user.first_name %><br>
+        <label><%= f.radio_button :address_select, 2 %>登録済住所から選択</label><br>
+        	<%= f.collection_select :address_id, @end_user.shipping_addresses, :id,:address %><br>
+        <label><%= f.radio_button :address_select, 3 %>新しいお届け先</label><br>
+        <%= f.hidden_field :end_user_id, :value => @end_user.id %>
+            <%= fields_for(@shipping_address) do |address| %>
+                <p>郵便番号(ハイフンなし)</p><%= address.text_field :zip_code %>
+                <p>住所</p><%= address.text_field :address %>
+                <p>宛名</p><%= address.text_field :name %><br>
+            <% end %>
+        <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
 <% end %>

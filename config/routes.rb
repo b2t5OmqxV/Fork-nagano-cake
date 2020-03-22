@@ -25,9 +25,8 @@ devise_for :end_users, controllers: {
 
 		resources :orders, only: [:index, :show, :create]
 		get "input" => "orders#input"
-		get "check" => "orders#check"
+		get "order_check" => "orders#order_check"
 		get "thanks" => "orders#thanks"
-
 
 		resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 	end
