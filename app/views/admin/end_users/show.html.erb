@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<h1>会員詳細画面</h1>
+
+			<h3>顧客ID</h3>
+			<h3><%= @end_user.id %></h3>
+			<h3><%= @end_user.is_unsubscribed %>会員</h3>
+
+			<h3>氏名</h3>
+			<h3><%= @end_user.family_name   +   @end_user.first_name %></h3>
+
+			<h3>フリガナ</h3>
+			<h3><%= @end_user.family_name_kana   +   @end_user.first_name_kana %></h3>
+
+			<h3>郵便番号</h3>
+			<h3><%= @end_user.zip_code %></h3>
+
+			<h3>住所</h3>
+			<h3><%= @end_user.address %></h3>
+
+			<h3>電話番号</h3>
+			<h3><%= @end_user.phone_number %></h3>
+
+			<h3>メールアドレス</h3>
+			<h3><%= @end_user.email %></h3>
+
+			<%= link_to "編集する", edit_admin_end_user_path(@end_user.id) %>
+			<%= link_to "注文履歴一覧を見る", admin_orders_path %>
+
+	</div>
+</div>
