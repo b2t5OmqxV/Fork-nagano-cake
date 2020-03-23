@@ -4,13 +4,17 @@
 
 			<h3>顧客ID</h3>
 			<h3><%= @end_user.id %></h3>
-			<h3><%= @end_user.is_unsubscribed %>会員</h3>
+			<% if @end_user.is_unsubscribed == false %>
+				<h3>有効会員</h3>
+			<% else %>
+				<h3>退会済会員</h3>
+			<% end %>
 
 			<h3>氏名</h3>
-			<h3><%= @end_user.family_name   +   @end_user.first_name %></h3>
+			<h3><%= (@end_user.family_name ) + ( @end_user.first_name) %></h3>
 
 			<h3>フリガナ</h3>
-			<h3><%= @end_user.family_name_kana   +   @end_user.first_name_kana %></h3>
+			<h3><%= (@end_user.family_name_kana ) + ( @end_user.first_name_kana) %></h3>
 
 			<h3>郵便番号</h3>
 			<h3><%= @end_user.zip_code %></h3>
