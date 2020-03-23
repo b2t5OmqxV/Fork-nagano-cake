@@ -5,9 +5,9 @@ class Admin::OrdersController < ApplicationController
   end
 
 	def index
-		if params[:day]
-			@orders = Order.created_today
-		elsif params[:end_user_id]
+		if request.referer&.include?("/admin/top")
+			@orders = Order.where("created_at >=?", Date.today)
+		elsif request.referer&.include?("/admin/end_users/end_user_id :id")
     	@orders = @end_user.orders
     else
       @orders = Order.all
