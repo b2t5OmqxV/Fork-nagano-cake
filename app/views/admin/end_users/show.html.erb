@@ -25,7 +25,7 @@
 			<h3><%= @end_user.email %></h3>
 
 			<%= link_to "編集する", edit_admin_end_user_path(@end_user.id) %>
-			<%= link_to "注文履歴一覧を見る", admin_orders_path %>
+			<%= link_to "注文履歴一覧を見る", admin_orders_path(end_user_id: @end_user.id) %>
 
 	</div>
 </div>

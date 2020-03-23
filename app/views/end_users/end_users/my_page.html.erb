@@ -3,11 +3,11 @@
       <h2>マイページ</h2>
 
       <h2>登録情報
-      <%= link_to "編集する", edit_end_users_path(current_end_user.id) %>
+      <%= link_to "編集する", my_page_edit_path %>
       <%= link_to "パスワードを変更する",edit_end_user_password_path %>
       </h2>
 
-　　　 <table class="table">
+      <table class="table">
 	      <tr>
 	      	<th>氏名</th>
 	      	<th><%= current_end_user.family_name %>  <%= current_end_user.first_name %></th>
