@@ -1,5 +1,13 @@
 class EndUsers::OrdersController < ApplicationController
 
+	def index
+		@end_user = EndUser.find(current_end_user.id)
+	end
+
+	def show
+		@order = Order.find(params[:id])
+	end
+
 	def input
 		@order = Order.new
 		@end_user = EndUser.find(current_end_user.id)
