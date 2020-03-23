@@ -4,38 +4,78 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-
-    <% if admin_signed_in? %>
-      <ul>
-        <li><%= link_to "商品一覧",admin_products_path %></li>
-        <li><%= link_to "会員一覧",admin_end_users_path %></li>
-        <li><%= link_to "注文履歴一覧",admin_orders_path %></li>
-        <li><%= link_to "ジャンル管理一覧",admin_genres_path %></li>
-        <li><%= link_to "ログアウト",destroy_admin_session_path, method: :delete %></li>
-      </ul>
-    <% elsif end_user_signed_in? %>
-       <ul>
-        <li><%= link_to "マイページ",my_page_path %></li>
-        <li><%= link_to "商品一覧", products_path %></li>
-        <li><%= link_to "カート", cart_products_path %></li>
-        <li><%= link_to "ログアウト",destroy_end_user_session_path, method: :delete %></li>
-      </ul>
-    <% elsif %>
-      <ul>
-        <li><%= link_to "商品一覧", products_path %></li>
-        <li><%= link_to "新規登録", new_end_user_registration_path %></li>
-        <li><%= link_to "ログイン", new_end_user_session_path %></li>
-      </ul>
-    <% end %>
-  </header>
-
   <body>
+      <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <%= image_tag "logo.jpg", :size => '200x100' %>
+
+                  <ul class="nav navbar-nav navbar-right">
+                    <% if admin_signed_in? %>
+                    <li>
+                      <i class="fas fa-store"></i><span><%= link_to "商品一覧",admin_products_path %></span>
+                    </li>
+                    <li>
+                      <i class="fas fa-address-card"></i><span><%= link_to "会員一覧",admin_end_users_path %></span>
+                    </li>
+                    <li>
+                      <i class="fas fa-history"></i><span><%= link_to "注文履歴一覧",admin_orders_path %></span>
+                    </li>
+                    <li>
+                      <i class="fas fa-list"></i><span><%= link_to "ジャンル管理一覧",admin_genres_path %></span>
+                    </li>
+                    <li>
+                      <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_admin_session_path, method: :delete %></span>
+                    </li>
+                    <!-- 検索ボックスのフォームです -->
+                    <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search </button>
+                    </form>
+
+                    <% elsif end_user_signed_in? %>
+                    <p>ようこそ、<%= current_end_user.first_name_kana %>さん!</p>
+
+                    <li>
+                      <i class="fas fa-user"></i><span><%= link_to "マイページ",my_page_path %></span>
+                    </li>
+                    <li>
+                      <i class="fas fa-list"></i><span><%= link_to "商品一覧", products_path %></span>
+                    </li>
+
+                    <li>
+                      <i class="fas fa-shopping-cart"></i><span><%= link_to "カート", cart_products_path %></span>
+                    </li>
+
+                    <li>
+                      <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_end_user_session_path, method: :delete %></span>
+                    </li>
+
+                    <% elsif %>
+                    <li>
+                      <i class="fas fa-list"></i><span><%= link_to "商品一覧", products_path %></span>
+                    </li>
+                    <li>
+                      <i class="fas fa-user-plus"></i><span><%= link_to "新規登録", new_end_user_registration_path %></span>
+                    </li>
+                    <li>
+                      <i class="fas fa-sign-in-alt"></i><span><%= link_to "ログイン", new_end_user_session_path %></span>
+                    </li>
+
+
+                    <% end %>
+
+                  </ul>
+                </div>
+          </nav>
+
+      </header>
+
     <%= yield %>
   </body>
 </html>
