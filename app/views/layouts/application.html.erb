@@ -68,7 +68,7 @@
                     </li>
                     <% else request.fullpath == "/admin/sign_in" %>
                      <li>
-                      <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_admin_session_path, method: :delete %></span>
+                      <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログイン",new_admin_session_path %></span>
                     </li>
 
                     <% end %>
