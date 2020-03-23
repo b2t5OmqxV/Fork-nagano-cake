@@ -4,8 +4,9 @@ class EndUsers::EndUsersController < ApplicationController
 		# @end_user = EndUser.find(params[:id])
 	end
 
-	def edit
-		@end_user = EndUser.find(params[:id])
+
+	def edit 
+		# @end_user = EndUser.find(params[:id])
 	end
 
 

@@ -1,11 +1,17 @@
 class Admin::OrdersController < ApplicationController
 
   def top
-	  @orders = Order.all
+	  @orders = Order.where("created_at >=?", Date.today)
   end
 
 	def index
-		@order = Order.find(params[:id])
+		if params[:day]
+			@orders = Order.created_today
+		elsif params[:end_user_id]
+    	@orders = @end_user.orders
+    else
+      @orders = Order.all
+    end
   end
 
 private
