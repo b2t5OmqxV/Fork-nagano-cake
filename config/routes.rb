@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
 
 
-
-
-
-
-devise_for :end_users, controllers: {
+    devise_for :end_users, controllers: {
       sessions: "end_users/end_users/sessions",
       registrations: "end_users/end_users/registrations",
       passwords: "end_users/end_users/passwords"
     }
+
   	scope module: :end_users do
 		root "products#top"
 
-		resource :end_users, only: [:edit, :update]
+		resources :end_users, only: [:update]
 		get "my_page" => "end_users#my_page"
+		get "my_page_edit" => "end_users#my_page_edit"
 		get "check" => "end_users#check"
 		post "unsubscribed" => "end_users#unsubscribed"
 
@@ -30,7 +28,6 @@ devise_for :end_users, controllers: {
 
 		resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 	end
-
 
  	devise_for :admins, skip: :all
  	devise_scope :admin do
