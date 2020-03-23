@@ -21,7 +21,13 @@
 							<td><%= end_user.id %></td>
 							<td><%= link_to end_user.family_name + end_user.first_name, admin_end_user_path(end_user) %></td>
 							<td><%= end_user.email %></td>
-							<td><%= end_user.is_unsubscribed %></td>
+							<td>
+								<% if end_user.is_unsubscribed == false %>
+									<p>有効</p>
+								<% else %>
+									<p>退会済</p>
+								<% end %>
+							</td>
 						</tr>
 					<% end %>
 				</tbody>

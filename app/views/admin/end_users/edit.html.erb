@@ -1,1 +1,73 @@
-<h1>edit</h1>
+<div class="container">
+	<div class="row">
+		<% if @end_user.errors.any? %>
+			<h3><%= @end_user.errors.count %>error occurrence</h3>
+			<ul>
+				<% @end_user.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		<% end %>
+
+		<h1>会員情報編集画面</h1>
+
+		<%= form_for(@end_user, url: admin_end_user_path) do |f| %>
+
+			<h3>会員ID</h3>
+			<h3><%= @end_user.id %></h3>
+
+			<h3>氏名</h3>
+			<div class="field">
+				<%= f.text_field :family_name %>
+				<%= f.text_field :first_name %>
+			</div>
+
+			<h3>フリガナ</h3>
+			<div class="field">
+				<%= f.text_field :family_name_kana %>
+				<%= f.text_field :first_name_kana %>
+			</div>
+
+			<h3>郵便番号</h3>
+			<div class="field">
+				<%= f.text_field :zip_code %>
+			</div>
+
+			<h3>住所</h3>
+			<div class="field">
+				<%= f.text_field :address %>
+			</div>
+
+			<h3>電話番号</h3>
+			<div class="field">
+				<%= f.text_field :phone_number %>
+			</div>
+
+			<h3>メールアドレス</h3>
+				<%= f.text_field :email %>
+			</div>
+
+			<% if @end_user.is_unsubscribed == false %>
+				<label><%= f.radio_button :is_unsubscribed, false, {:checked => true} %>有効</label>
+        		<label><%= f.radio_button :is_unsubscribed, true %>退会</label>
+        	<% else %>
+        		<label><%= f.radio_button :is_unsubscribed, false %>有効</label>
+        		<label><%= f.radio_button :is_unsubscribed, true, {:checked => true} %>退会</label>
+        	<% end %>
+
+        	<%= f.submit "変更を保存する", class:"btn btn-primary btn-block" %>
+
+		<% end %>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
