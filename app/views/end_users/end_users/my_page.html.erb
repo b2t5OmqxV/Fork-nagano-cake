@@ -1,5 +1,11 @@
   <div class="container">
     <div class="row">
+
+
+      <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+      <% end %>
+
       <h2>マイページ</h2>
 
       <h2>登録情報
