@@ -16,9 +16,9 @@
 					<% @end_user.cart_products.each do |cart_product|%>
 						<tr>
 							<td><%= attachment_image_tag cart_product.product, :image, :fill, 100, 100, format: "jpeg" %><%= cart_product.product.name %></td>
-							<td><%= cart_product.product.price %></td>
+							<td><%= cart_product.product.price * 1.1 %></td>
 							<td><%= cart_product.quantity %></td>
-								<% sub_total = cart_product.product.price * cart_product.quantity %>
+								<% sub_total = cart_product.product.price * 1.1 * cart_product.quantity %>
 								<% sum += sub_total %>
 							<td><%= sub_total %></td>
 						</tr>
@@ -66,7 +66,33 @@
 			<% elsif address_select == "2" %>
 				<%= @shipping_address.zip_code %> <%= @shipping_address.address %></p>
 				<%= @shipping_address.name %>
+				<%= form_with model: @order, url: orders_path ,local: true, method: :post do |f| %>
+					<%= f.hidden_field :end_user_id, :value => @end_user.id %>
+					<%= f.hidden_field :address, :value => @shipping_address.address %>
+					<%= f.hidden_field :zip_code, :value => @shipping_address.zip_code %>
+					<%= f.hidden_field :name, :value => @shipping_address.name %>
+					<%= f.hidden_field :payment_method, :value => params[:order][:payment_method] %>
+					<%= f.hidden_field :total_fee, :value => charge %>
+					<%= f.hidden_field :order_status, :value => :waiting_payment %>
+					<%= f.submit "購入を確定する", class:"btn btn-primary" %>
+				<% end %>
 			<% else %>
-				<p><%= params[:shipping_address][:zip_code] %> <%= params[:shipping_address][:address] %> <%= params[:shipping_address][:name] %></p>
+				<p><%= params[:shipping_address][:zip_code] %> <%= params[:shipping_address][:address] %></p><%= params[:shipping_address][:name] %>
+				<%= form_with model: @order, url: orders_path ,local: true, method: :post do |f| %>
+					<%= f.hidden_field :end_user_id, :value => @end_user.id %>
+					<%= f.hidden_field :address, :value => params[:shipping_address][:address] %>
+					<%= f.hidden_field :zip_code, :value => params[:shipping_address][:zip_code] %>
+					<%= f.hidden_field :name, :value => params[:shipping_address][:name] %>
+					<%= f.hidden_field :payment_method, :value => params[:order][:payment_method] %>
+					<%= f.hidden_field :total_fee, :value => charge %>
+					<%= f.hidden_field :order_status, :value => :waiting_payment %>
+					<%= fields_for(@shipping_address) do |a| %>
+						<%= f.hidden_field :end_user_id, :value => @end_user.id %>
+						<%= f.hidden_field :address, :value => params[:shipping_address][:address] %>
+						<%= f.hidden_field :zip_code, :value => params[:shipping_address][:zip_code] %>
+						<%= f.hidden_field :name, :value => params[:shipping_address][:name] %>
+					<% end %>
+					<%= f.submit "購入を確定する", class:"btn btn-primary" %>
+				<% end %>
 			<% end %>
 </div>
