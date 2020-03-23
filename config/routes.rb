@@ -20,14 +20,13 @@ devise_for :end_users, controllers: {
 
 		resources :products, only: [:index, :show]
 
-		resources :cart_products, only: [:index, :create, :destroy]
+		resources :cart_products, only: [:index, :create, :destroy, :update]
 		delete "cart_products" => "cart_products#clear"
 
 		resources :orders, only: [:index, :show, :create]
 		get "input" => "orders#input"
-		get "check" => "orders#check"
+		get "order_check" => "orders#order_check"
 		get "thanks" => "orders#thanks"
-
 
 		resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 	end
