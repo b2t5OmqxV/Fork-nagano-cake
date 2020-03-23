@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 		get "input" => "orders#input"
 		get "order_check" => "orders#order_check"
 		get "thanks" => "orders#thanks"
+		delete "end_user_path/:id" =>"end_users#destroy"
 
 		resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 	end
