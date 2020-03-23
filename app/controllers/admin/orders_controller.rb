@@ -7,7 +7,7 @@ class Admin::OrdersController < ApplicationController
 	def index
 		if request.referer&.include?("/admin/top")
 			@orders = Order.where("created_at >=?", Date.today)
-		elsif request.referer&.include?("/admin/end_users/end_user_id :id")
+		elsif request.referer&.include?("/admin/end_users/.id")
     	@orders = @end_user.orders
     else
       @orders = Order.all
