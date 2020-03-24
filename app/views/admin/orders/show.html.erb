@@ -35,14 +35,35 @@
 			</thead>
 
 			<tbody>
+				<% sum = 0 %>
 				<% @order.order_products.each do |order| %>
 				<tr>
 					<td><%= order.product.name %></td>
 					<td><%= order.price  * 1.1 %></td>
 					<td><%= order.quantity %></td>
-					<td></td>
+						<% sub_total = order.price * 1.1 * order.quantity %>
+						<% sum += sub_total %>
+					<td><%= sub_total %></td>
+					<td>
+						<%= form_for @order, url: admin_production_update_path) do |f| %>
+					　		
+						<% end %>
+					</td>
 				</tr>
 			</tbody>
 		</table>
+
+		<h3>商品合計  <%= sum %>円</h3>
+		<h3>送料  800円</h3>
+		<h3>請求金額合計  <%= sum + 800 %>円</h3>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
