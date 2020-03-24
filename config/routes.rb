@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 		resources :orders, only: [:index, :show,]
 		post "update" => "orders#update"
 		post "production_update" => "order_products#update"
+		get "search" => "searches#search"
 	end
 
 end

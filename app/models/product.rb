@@ -4,4 +4,12 @@ class Product < ApplicationRecord
 	has_many :order_products
 
 	attachment :image
+
+	def Product.search(search, product_or_end_user)
+    if product_or_end_user == "1"
+      Product.where(["name LIKE ?","%#{search}%"])
+    else
+      Product.all
+    end
+  end
 end

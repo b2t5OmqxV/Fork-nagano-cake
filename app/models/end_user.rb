@@ -12,5 +12,12 @@ has_many :orders
  #    super && (self.is_unsubscribed == false)
  #  end
 
+ def EndUser.search(search, product_or_end_user)
+   if product_or_end_user == "2"
+    EndUser.where(["family_name LIKE? OR first_name LIKE?","%#{search}%","%#{search}%"])
+   else
+   	EndUser.all
+   end
+ end
 
 end
