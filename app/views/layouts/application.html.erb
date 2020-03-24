@@ -39,7 +39,7 @@
                     </form>
 
                     <% elsif end_user_signed_in? %>
-                    <p>ようこそ、<%= current_end_user.first_name_kana %>さん!</p>
+                    <p>ようこそ、<%= current_end_user.family_name %><%= current_end_user.first_name %>さん!</p>
 
                     <li>
                       <i class="fas fa-user"></i><span><%= link_to "マイページ",my_page_path %></span>
