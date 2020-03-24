@@ -7,11 +7,21 @@ class Admin::OrdersController < ApplicationController
 	def index
 		if request.referer&.include?("/admin/top")
 			@orders = Order.where("created_at >=?", Date.today)
-		elsif request.referer&.include?("/admin/end_users/.id")
-    	@orders = @end_user.orders
+		elsif params[:end_user_id]
+      @orders = Order.where("end_user_id >=?" ,params[:end_user_id])
     else
       @orders = Order.all
     end
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to admin_order_path(@order.id)
   end
 
 

@@ -18,6 +18,7 @@ class EndUsers::OrdersController < ApplicationController
 		@end_user = EndUser.find(current_end_user.id)
 		@order = Order.new(order_params)
 		@shipping_address = ShippingAddress.new(shipping_address_params)
+		@shipping_address.save
 		@order.save
 		@end_user.cart_products.each do |f|
 			@order_products = OrderProduct.new(order_products_params)
