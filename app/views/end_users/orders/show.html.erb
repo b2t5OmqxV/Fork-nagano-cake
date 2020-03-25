@@ -59,9 +59,9 @@
 				<% @order.order_products.each do |op| %>
 					<tr>
 						<td><%= op.product.name %></td>
-						<td><%= op.price * 1.1 %></td>
+						<td><%= op.price * 1.1 .round %></td>
 						<td><%= op.quantity %></td>
-						<td><%= op.price * 1.1 * op.quantity %></td>
+						<td><%= op.price * 1.1 .round * op.quantity %></td>
 					</tr>
 				<% end %>
 			</tbody>
