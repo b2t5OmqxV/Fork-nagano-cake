@@ -18,7 +18,7 @@
 							<%= attachment_image_tag(product, :image, :fill, 50, 50) %>
 						<% end %>
 						<h3><%= product.name %></h3>
-						<h3>¥<%= product.price * 1.1 %></h3>
+						<h3>¥<%= product.price * 1.1.round %></h3>
 					<% end %>
 		</div>
 	</div>
