@@ -37,7 +37,6 @@ class EndUsers::OrdersController < ApplicationController
 
 	def order_check
 		@end_user = EndUser.find(current_end_user.id)
-		@shipping_address = ShippingAddress.find(params[:order][:address_id])
 	end
 
 

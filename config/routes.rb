@@ -42,9 +42,8 @@ Rails.application.routes.draw do
 		resources :end_users, only: [:index, :show, :edit, :update]
 		resources :products, only: [:index, :new, :show, :create, :edit, :update]
 		resources :genres, only: [:index, :create, :edit, :update]
-		resources :orders, only: [:index, :show,]
-		post "update" => "orders#update"
-		post "production_update" => "order_products#update"
+		resources :orders, only: [:index, :show, :update]
+		resources :order_products, only: [:update]
 	end
 
 end

@@ -64,6 +64,7 @@
 					<%= f.submit "購入を確定する", class:"btn btn-primary" %>
 				<% end %>
 			<% elsif address_select == "2" %>
+				<% @shipping_address = ShippingAddress.find(params[:order][:address_id]) %>
 				<%= @shipping_address.zip_code %> <%= @shipping_address.address %></p>
 				<%= @shipping_address.name %>
 				<%= form_with model: @order, url: orders_path ,local: true, method: :post do |f| %>

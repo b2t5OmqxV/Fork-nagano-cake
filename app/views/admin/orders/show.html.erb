@@ -4,9 +4,7 @@
 
 		<h3>購入者</h3>
 		<h3>
-			<% link_to admin_end_user(@order.end_user.id) do %>
-			<%= @order.end_user.family_name + @order.end_user.family_name %>
-			<% end %>
+			<%= link_to @order.end_user.family_name + @order.end_user.first_name, admin_end_user_path(@order.end_user.id) %>
 		</h3>
 
 		<h3>配送先</h3>
@@ -18,8 +16,9 @@
 		<h3><%= @order.payment_method %></h3>
 
 		<h3>注文ステータス</h3>
-		<%= form_for @order, url: admin_update_path) do |f| %>
-			
+		<%= form_for(@order, url: admin_order_path) do |f| %>
+		<%= f.select :order_status, [["入金待ち", :waiting_payment],["入金確認",:payment_confirmation],["製作中",:in_production],["発送準備中",:preparing_shipment],["発送済み",:already_shipped]] %>
+		<%= f.submit "更新", class:"btn btn-primary btn-block" %>
 		<% end %>
 
 		<table class="table table-hover">
@@ -45,11 +44,14 @@
 						<% sum += sub_total %>
 					<td><%= sub_total %></td>
 					<td>
-						<%= form_for @order, url: admin_production_update_path) do |f| %>
-					　		
+						<%= form_with model: order, url: admin_order_product_path, local: true do |f| %>
+						<%= f.select :production_status, [["着手不可", :cannot_start],["制作待ち",:waiting_production],["製作中",:in_production],["製作完了",:completed_production]] %>
+						<%= f.hidden_field :order_id, :value => order.id %>
+						<%= f.submit "更新", class:"btn btn-primary btn-block" %>
 						<% end %>
 					</td>
 				</tr>
+				<% end %>
 			</tbody>
 		</table>
 
