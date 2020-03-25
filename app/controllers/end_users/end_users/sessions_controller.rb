@@ -20,8 +20,6 @@ class EndUsers::EndUsers::SessionsController < Devise::SessionsController
 
 
 
-
-
   #    def reject_user
   #   @end_user = EndUser.find_by(email: params[:end_user][:email].downcase)
 

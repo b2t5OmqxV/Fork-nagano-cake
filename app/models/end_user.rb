@@ -8,7 +8,13 @@ has_many :cart_products
 has_many :orders
 
     acts_as_paranoid
+    # acts_as_paranoid without_default_scope: true
 
+# controller do
+#     def scoped_collection
+#       EndUser.with_deleted
+#     end
+#   end
 
 # ログインするときに退会済みユーザーを弾く
  # def active_for_authentication?
