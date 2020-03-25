@@ -1,5 +1,7 @@
 class EndUsers::ProductsController < ApplicationController
 
+
+
 	def top
 	   @genres = Genre.all
 	   @products = Product.all
@@ -23,7 +25,10 @@ class EndUsers::ProductsController < ApplicationController
 		@genres = Genre.all
 		@product = Product.find(params[:id])
 		@product_new = CartProduct.new
+		if end_user_signed_in?
 		@end_user = EndUser.find(current_end_user.id)
+	else
+	end
 	end
 end
 

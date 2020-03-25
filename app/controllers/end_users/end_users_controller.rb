@@ -1,5 +1,6 @@
 class EndUsers::EndUsersController < ApplicationController
 
+before_action :authenticate_end_user!
 
 	def my_page
 		# @end_user = EndUser.find(params[:id])
