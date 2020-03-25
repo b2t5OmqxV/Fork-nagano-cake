@@ -21,7 +21,7 @@
 			<tr>
 				<td><%= product.id %></td>
 				<td><%= link_to product.name, admin_product_path(product) %></td>
-				<td><%= product.price %></td>
+				<td><%= product.price.round %></td>
 				<td><%= product.genre.name %></td>
 				<td><%= product.is_soldout %></td>
 			</tr>
