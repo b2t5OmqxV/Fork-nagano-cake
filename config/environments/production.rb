@@ -91,4 +91,22 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: ‘localhost’, port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    enable_starttls_auto: true,
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            'tatuyaizumi7@gmail.com',
+    # 自分のGメールアドレスを入れて下さい。
+    password:             'phyixaznjregjbpr',
+    # Chromeで2段回認証を行い、アプリパスワードを設定して下さい。
+    authentication:       :plain
+   }
+
+  # host = 'localhost'
+  # Rails.application.routes.default_url_options[:host] = host
 end
