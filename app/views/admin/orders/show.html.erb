@@ -7,8 +7,6 @@
 
 			<%= link_to @order.end_user.family_name + @order.end_user.first_name, admin_end_user_path(@order.end_user.id) %>
 
-			
-
 		</h3>
 
 		<h3>配送先</h3>
@@ -42,9 +40,9 @@
 				<% @order.order_products.each do |order| %>
 				<tr>
 					<td><%= order.product.name %></td>
-					<td><%= order.price  * 1.1 %></td>
+					<td><%= order.price  * 1.1 .round%></td>
 					<td><%= order.quantity %></td>
-						<% sub_total = order.price * 1.1 * order.quantity %>
+						<% sub_total = order.price * 1.1 .round * order.quantity %>
 						<% sum += sub_total %>
 					<td><%= sub_total %></td>
 					<td>
@@ -61,7 +59,7 @@
 
 		<h3>商品合計  <%= sum %>円</h3>
 		<h3>送料  800円</h3>
-		<h3>請求金額合計  <%= sum + 800 %>円</h3>
+		<h3>請求金額合計  <%= sum  + 800  %>円</h3>
 	</div>
 </div>
 
