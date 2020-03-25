@@ -1,5 +1,8 @@
 class Admin::SearchesController < ApplicationController
 
+
+
+
  def search
   @product_or_end_user = params[:option]
     if @product_or_end_user == "1"

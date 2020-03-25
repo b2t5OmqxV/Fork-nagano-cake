@@ -1,5 +1,7 @@
 class EndUsers::CartProductsController < ApplicationController
 
+before_action :authenticate_end_user!
+
 	def index
 		@end_user = EndUser.find(current_end_user.id)
 	end
