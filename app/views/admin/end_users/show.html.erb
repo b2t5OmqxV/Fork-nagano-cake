@@ -11,10 +11,10 @@
 			<% end %>
 
 			<h3>氏名</h3>
-			<h3><%= (@end_user.family_name ) + ( @end_user.first_name) %></h3>
+			<h3><%= @end_user.family_name %><%=@end_user.first_name %></h3>
 
 			<h3>フリガナ</h3>
-			<h3><%= (@end_user.family_name_kana ) + ( @end_user.first_name_kana) %></h3>
+			<h3><%= @end_user.family_name_kana %><%= @end_user.first_name_kana %></h3>
 
 			<h3>郵便番号</h3>
 			<h3><%= @end_user.zip_code %></h3>
