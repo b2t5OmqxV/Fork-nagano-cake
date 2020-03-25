@@ -3,7 +3,8 @@ class Admin::EndUsersController < ApplicationController
 
 before_action :authenticate_admin!
 	def index
-		@end_users = EndUser.all
+		# 退会済みになったユーザーも合わせて取得する記述
+		@end_users = EndUser.with_deleted
 	end
 
 	def show
@@ -17,6 +18,7 @@ before_action :authenticate_admin!
 	def update
 		@end_user = EndUser.find(params[:id])
   		if @end_user.update(end_user_params)
+  			# @end_user.restore
   		redirect_to admin_end_user_path(@end_user), notice: "successfully updated user!"
   		else
   		render "edit"
