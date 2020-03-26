@@ -8,21 +8,28 @@ before_action :authenticate_admin!
 	end
 
 	def show
-		@end_user = EndUser.find(params[:id])
+		@end_user = EndUser.with_deleted.find(params[:id])
 	end
 
 	def edit
-		@end_user = EndUser.find(params[:id])
+		@end_user = EndUser.with_deleted.find(params[:id])
 	end
 
 	def update
-		@end_user = EndUser.find(params[:id])
-  		if @end_user.update(end_user_params)
-  			# @end_user.restore
-  		redirect_to admin_end_user_path(@end_user), notice: "successfully updated user!"
-  		else
-  		render "edit"
-  		end
+		@end_user = EndUser.with_deleted.find(params[:id])
+  		 if @end_user.update(end_user_params)
+  		    # 退会ステータスも変更された場合
+  		 	if @end_user.is_unsubscribed == false #有効
+  			   @end_user.restore
+  		
+  			elsif @end_user.is_unsubscribed == true #退会
+  				  @end_user.destroy
+  			end
+
+  		     redirect_to admin_end_user_path(@end_user), notice: "successfully updated user!"
+  		 else
+  		     render "edit"
+  		 end
 	end
 
 	private
@@ -32,3 +39,4 @@ before_action :authenticate_admin!
 
 
 end
+
