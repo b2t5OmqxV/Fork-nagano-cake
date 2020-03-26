@@ -15,7 +15,7 @@
 		</h3>
 
 		<h3>支払方法</h3>
-		<h3><%= @order.payment_method %></h3>
+		<h3><%= @order.payment_method_i18n %></h3>
 
 		<h3>注文ステータス</h3>
 		<%= form_for(@order, url: admin_order_path) do |f| %>
