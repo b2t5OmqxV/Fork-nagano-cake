@@ -20,12 +20,13 @@
         </th>
   			<th><%= order.end_user.family_name + order.end_user.family_name %></th>
   			<th><%= order.count %>
-<!--           <% sum = 0 %>
+     <!-- <% sum = 0 %>
           <% order.order_products.each do |order_product| %>
           <% sub_total = order_product.quantity %>
           <% sum += sub_total %>
           <% end %>
           <%= sum %> -->
+          <!-- viewだけの処理も残しておきます。 -->
         </th>
   			<th><%= order.order_status %></th>
   		</tr>
