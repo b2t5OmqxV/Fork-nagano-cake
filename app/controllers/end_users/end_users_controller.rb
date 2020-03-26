@@ -2,13 +2,6 @@ class EndUsers::EndUsersController < ApplicationController
 
 before_action :authenticate_end_user!
 
-	def my_page
-		# @end_user = EndUser.find(params[:id])
-	end
-
-	def my_page_edit
-		# @end_user = EndUser.find(par ams[:id])
-	end
 
 	def update
        @end_user = EndUser.find(current_end_user.id)
@@ -20,9 +13,6 @@ before_action :authenticate_end_user!
     end
   end
 
-# 退会確認画面アクション
-	def check
-	end
 
 # 退会ステータス変更アクション
 	def unsubscribed
@@ -40,6 +30,6 @@ end
 
 	private
 	def end_user_params
-    params.require(:end_user).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :zip_code, :address, :phone_number, :is_unsubscribed)
+    params.require(:end_user).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :zip_code, :address, :phone_number, :is_unsubscribed, :email)
   end
 end

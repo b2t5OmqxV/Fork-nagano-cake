@@ -4,6 +4,7 @@ class Admin::EndUsersController < ApplicationController
 before_action :authenticate_admin!
 	def index
 		# 退会済みになったユーザーも合わせて取得する記述
+		
 		@end_users = EndUser.with_deleted
 	end
 
