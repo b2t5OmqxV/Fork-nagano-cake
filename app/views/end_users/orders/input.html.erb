@@ -12,10 +12,10 @@
             </div>
         <% end %>
         <h4>支払い方法</h4>
-        <label><%= f.radio_button :payment_method, :credit_card %>クレジットカード</label>
+        <label><%= f.radio_button :payment_method, :credit_card, {:checked => true} %>クレジットカード</label>
         <label><%= f.radio_button :payment_method, :bank_transfer %>銀行振込</label>
         <h4>お届け先</h4>
-        <label><%= f.radio_button :address_select, 1 %>ご自身の住所</label><br>
+        <label><%= f.radio_button :address_select, 1, {:checked => true}%>ご自身の住所</label><br>
         	<%= @end_user.zip_code%> <%=  @end_user.address %> <%= str = @end_user.family_name << @end_user.first_name %><br>
         <label><%= f.radio_button :address_select, 2 %>登録済住所から選択</label><br>
         	<%= f.collection_select :address_id, @end_user.shipping_addresses, :id,:address %><br>
