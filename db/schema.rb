@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_091335) do
     t.string "name"
     t.integer "payment_method"
     t.integer "total_fee"
-    t.integer "postage"
+    t.integer "postage", default: 800
     t.integer "order_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
