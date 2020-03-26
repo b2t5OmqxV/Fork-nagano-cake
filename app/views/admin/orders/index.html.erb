@@ -11,15 +11,22 @@
   	  </tr>
   	</thead>
   	<tbody>
-  		  <% @orders.each do |order| %>
+  		  <% @order.each do |order| %>
   		<tr>
   			<th>
           <%= link_to admin_order_path(order.id) do %>
-          <%= order.created_at strftime ("%Y-%m-%d %H:%M:%S") %>
+          <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
           <% end %>
         </th>
   			<th><%= order.end_user.family_name + order.end_user.family_name %></th>
-  			<th><%= order.end_user.order_products.quantity.count %></th>
+  			<th>
+          <% sub_total = 0 %>
+          <% @order_products.where(order_id: order.id).each do |order_product| %>
+          <% sub_total = order_product.quantity %>
+          <% sum += sub_total %>
+          <% end %>
+          <%= sub_total %>
+        </th>
   			<th><%= order.order_status %></th>
   		</tr>
   		<% end %>

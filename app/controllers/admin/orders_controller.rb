@@ -3,17 +3,18 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
 
   def top
-	  @orders = Order.where("created_at >=?", Date.today)
+	  @order = Order.where("created_at >=?", Date.today)
   end
 
 	def index
 		if request.referer&.include?("/admin/top")
-			@orders = Order.where("created_at >=?", Date.today)
+			@order = Order.where("created_at >=?", Date.today)
 		elsif params[:end_user_id]
-      @orders = Order.where("end_user_id >=?" ,params[:end_user_id])
+      @order = Order.where("end_user_id >=?" ,params[:end_user_id])
     else
-      @orders = Order.all
+      @order = Order.all
     end
+    @order_products = OrderProduct.all
   end
 
   def show
