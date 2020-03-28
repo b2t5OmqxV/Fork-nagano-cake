@@ -17,14 +17,14 @@ before_action :authenticate_end_user!
 # 退会ステータス変更アクション
 	def unsubscribed
     @end_user = EndUser.find(current_end_user.id)
-    # 退会ステータスを有効にする
-    @end_user.update(is_unsubscribed: true )
-    @end_user.destroy
-    # ログアウトさせる
-    reset_session
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-    redirect_to root_path
-end
+     # 退会ステータスを有効にする
+        @end_user.update(is_unsubscribed: true )
+        @end_user.destroy
+        # ログアウトさせる
+        reset_session
+        flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+        redirect_to root_path
+  end
 
 
 

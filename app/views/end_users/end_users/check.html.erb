@@ -1,3 +1,5 @@
+<div class="taikai">
+
 <h3>本当に退会しますか</h3>
 
 <p>
@@ -6,5 +8,7 @@
 退会する場合は、「退会する」をクリックしてください。<br>
 </p>
 
-<%= link_to "退会しない", my_page_path, class: "btn-sm btn-success "%>
+<%= link_to "退会しない", my_page_path, class: "btn btn-success "%>
 <%= link_to "退会する", unsubscribed_path, method: :post, data:  { confirm: '本当に退会しますか？' }, class: "btn btn-danger" %>
+
+</div>

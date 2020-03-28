@@ -1,44 +1,44 @@
-<h3>登録情報編集</h3>
+<div class="hensyu">
 
+<h3>登録情報編集</h3>
 
 <%= form_for(current_end_user) do |f| %>
 
-<div class="field">
-<%= f.label :"名前" %>
-(姓)<%= f.text_field :family_name %>
-(名)<%= f.text_field :first_name %>
-</div>
 
-<div class="field">
-<%= f.label :"フリガナ" %>
-(セイ)<%= f.text_field :family_name_kana %>
-(メイ)<%= f.text_field :first_name_kana %>
-</div>
+<p><strong>名前</strong></p>
+<p>(姓)</p>
+<p><%= f.text_field :family_name %></p>
+<p>(名)</p>
+<p><%= f.text_field :first_name %></p>
 
-<div class="field">
-<%= f.label :"メールアドレス" %>
-<%= f.email_field :email, autocomplete: "email" %>
-</div>
+<p><strong>フリガナ</strong></p>
+<p>(セイ)</p>
+<P><%= f.text_field :family_name_kana %></P>
+<p>(メイ)</p>
+<p><%= f.text_field :first_name_kana %></p>
 
-<div class="field">
-<%= f.label :"郵便番号(ハイフンなし)" %>
-<%= f.text_field :zip_code %>
-</div>
+<p>メールアドレス</p>
+<p><%= f.email_field :email, autocomplete: "email" %></p>
 
-<div class="field">
-<%= f.label :"住所" %>
-<%= f.text_field :address %>
-<div class="field">
-
-<div class="field">
-<%= f.label :"電話番号(ハイフンなし)" %>
-<%= f.text_field :phone_number %>
-</div>
+<p>郵便番号(ハイフンなし)</p>
+<p><%= f.text_field :zip_code %></p>
 
 
-<%= f.submit "編集内容を保存する", class: "btn-sm btn-success " %>　
+<p>住所</p>
+<p><%= f.text_field :address %></p>
 
-<%= link_to "退会する", check_path, class: " btn-sm btn-danger "%>
+<p>電話番号(ハイフンなし)</p>
+<p><%= f.text_field :phone_number %></p>
+
+
+
+
+<%= f.submit "編集内容を保存する", class: "btn btn-success " %>
+
+<%= link_to "退会する", check_path, class: " btn btn-danger "%>
 
 <% end %>
+
+</div>
+
 
