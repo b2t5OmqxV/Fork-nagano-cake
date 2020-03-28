@@ -19,8 +19,10 @@ class EndUsers::OrdersController < ApplicationController
 	def create
 		@end_user = EndUser.find(current_end_user.id)
 		@order = Order.new(order_params)
+		if params[:select] == "3"
 		@shipping_address = ShippingAddress.new(shipping_address_params)
 		@shipping_address.save
+		else
 		@order.save
 		@end_user.cart_products.each do |f|
 			@order_products = OrderProduct.new(order_products_params)
@@ -30,6 +32,7 @@ class EndUsers::OrdersController < ApplicationController
 			@order_products.price = f.product.price
 			@order_products.production_status = :cannot_start
 			@order_products.save
+		end
 		end
 		@end_user.cart_products.each do |c|
 			c.destroy

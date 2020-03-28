@@ -46,14 +46,21 @@
 		</div>
 	</div>
 	<div class="row">
-		<p><h4>支払い方法</h4> <%= params[:order][:payment_method] %></p>
+		<p><h4>支払い方法</h4>
+			<% if  params[:order][:payment_method] == "bank_transfer" %>
+		 	<p>銀行振込</p>
+		 	<% else %>
+		 	<p>クレジットカード</p>
+		 	<% end %>
+		</p>
 	</div>
 	<div class="row">
 		<% address_select = params[:order][:address_select] %>
-		<p><h4>お届け先</h4>
+		<h4>お届け先</h4>
 			<% if address_select == "1" %>
-				<%= @end_user.zip_code %> <%=  @end_user.address %> <%= str = @end_user.family_name << @end_user.first_name %></p>
+				<p><%= @end_user.zip_code %> <%=  @end_user.address %> <%= str = @end_user.family_name << @end_user.first_name %></p>
 				<%= form_with model: @order, url: orders_path ,local: true, method: :post do |f| %>
+					<%= f.hidden_field :select, :value => 1 %>
 					<%= f.hidden_field :end_user_id, :value => @end_user.id %>
 					<%= f.hidden_field :address, :value => @end_user.address %>
 					<%= f.hidden_field :zip_code, :value => @end_user.zip_code %>
@@ -65,9 +72,10 @@
 				<% end %>
 			<% elsif address_select == "2" %>
 				<% @shipping_address = ShippingAddress.find(params[:order][:address_id]) %>
-				<%= @shipping_address.zip_code %> <%= @shipping_address.address %></p>
-				<%= @shipping_address.name %>
+				<p><%= @shipping_address.zip_code %> <%= @shipping_address.address %>
+				<%= @shipping_address.name %></p>
 				<%= form_with model: @order, url: orders_path ,local: true, method: :post do |f| %>
+					<%= f.hidden_field :select, :value => 2 %>
 					<%= f.hidden_field :end_user_id, :value => @end_user.id %>
 					<%= f.hidden_field :address, :value => @shipping_address.address %>
 					<%= f.hidden_field :zip_code, :value => @shipping_address.zip_code %>
@@ -78,8 +86,9 @@
 					<%= f.submit "購入を確定する", class:"btn btn-primary" %>
 				<% end %>
 			<% else %>
-				<p><%= params[:shipping_address][:zip_code] %> <%= params[:shipping_address][:address] %></p><%= params[:shipping_address][:name] %>
+				<p><%= params[:shipping_address][:zip_code] %> <%= params[:shipping_address][:address] %><%= params[:shipping_address][:name] %></p>
 				<%= form_with model: @order, url: orders_path ,local: true, method: :post do |f| %>
+					<%= f.hidden_field :select, :value => 3 %>
 					<%= f.hidden_field :end_user_id, :value => @end_user.id %>
 					<%= f.hidden_field :address, :value => params[:shipping_address][:address] %>
 					<%= f.hidden_field :zip_code, :value => params[:shipping_address][:zip_code] %>
