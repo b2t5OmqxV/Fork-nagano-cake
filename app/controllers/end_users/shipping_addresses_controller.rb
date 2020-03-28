@@ -28,6 +28,12 @@ def update
     redirect_to shipping_addresses_path
 end
 
+	def destroy
+		@shipping_address = ShippingAddress.find(params[:id])
+		@shipping_address.destroy
+		redirect_to request.referer
+	end
+
 private
 
   def address_params
