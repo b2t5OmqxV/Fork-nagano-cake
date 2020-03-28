@@ -25,11 +25,11 @@ $(document).ready(function () {
       // easingの種類
       easing : 'easeOutQuart',
       // ナビゲーションの形("block" or "bubble")
-      navType : 'block',
+      navType : 'bubble',
       // 子要素の種類("div" or "img")
       childrenElementType : 'div',
       // ナビゲーション矢印の表示(trueで表示)
-      arrows : true,
+      arrows : false,
       // スライドショーの自動再生(falseで自動再生なし)
       autoPlay : true,
       // 自動再生時のスライド切替間隔(ミリ秒)
@@ -39,4 +39,8 @@ $(document).ready(function () {
       // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
       hidePrevious : false
   });
+});
+
+$(function () {
+      $('[data-toggle="tooltip"]').tooltip();
 });
