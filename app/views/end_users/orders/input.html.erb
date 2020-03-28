@@ -1,4 +1,6 @@
-<h1>情報入力</h1>
+<div class="container">
+    <div class="row">
+      <h1><strong>情報入力</strong></h1>
 
 <%= form_with model: @order, url: order_check_path ,local: true, method: :get do |f| %>
 		<% if @order.errors.any? %>
