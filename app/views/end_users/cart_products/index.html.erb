@@ -40,5 +40,7 @@
 	</table>
 	<%= link_to "買い物を続ける", root_path %>
 	<p>合計金額 <%= sum %></p>
+	<% unless sum == 0 %>
 	<%= link_to "情報入力に進む", input_path, class:"btn btn-primary" %>
 	<%= link_to "カートを空にする", cart_products_clear_path, method: :delete,  class:"btn btn-danger" %>
+	<% end %>

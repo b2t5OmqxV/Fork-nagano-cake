@@ -29,7 +29,7 @@ has_many :orders
    end
  end
 
-
+validates :email, :family_name, :first_name, :family_name_kana, :first_name_kana, :zip_code, :address, :phone_number, presence: true
 
 
 
