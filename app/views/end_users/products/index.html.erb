@@ -4,12 +4,15 @@
 		<div class="col-md-3">
 			<%= render 'admin/genres/search', genres: @genres %>
 		</div>
+
 		<div class="col-md-9">
+
 					<% if params[:id] %>
 					<h1><%= @genre.name %>一覧</h1>
 					<% else %>
 					<h1><strong> 商品一覧 </strong></h1>
 					<% end %>
+
 
 				<h3>全 <%= @products.count %> 件</h3>
 
@@ -27,5 +30,6 @@
 						<% end %>
 					</div>
 		</div>
+
 	</div>
 </div>

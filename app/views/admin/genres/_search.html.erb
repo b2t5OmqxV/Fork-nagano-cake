@@ -1,8 +1,46 @@
-<h1><strong>ジャンル検索</strong></h1>
+<div class="genbox">
+
+<h3 class= "title"><strong>ジャンル検索</strong></h3>
 
 <% genres.each do |genre| %>
 
 	<%= link_to ({controller: 'end_users/products', action: 'index', id: genre.id }) do %>
-	 <%= genre.name %>
+
+<ul class="list">
+	 <li><%= genre.name %></li>
+</ul>
+
 	<% end %>
 <% end %>
+
+</div>
+
+<style>
+
+  .genbox {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;
+    background: #FFF;
+    border: solid 3px #6091d3;
+    border-radius: 10px;
+  }
+
+  .title {
+    border-bottom:solid thin;
+    text-align: center;
+    font-family: 
+  }
+
+  ul, li {
+  padding-top:4px;
+  padding-bottom:4px;
+  list-style-type: disc;
+  font: 8px;
+  margin-left: 1em;
+}
+
+
+</style>
+
