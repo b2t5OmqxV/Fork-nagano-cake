@@ -19,8 +19,8 @@
               <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
               <% end %>
             </td>
-  			    <td><%= order.end_user.family_name + order.end_user.family_name %></td>
-  			    <td><%= order.count %>
+  			    <td><%= order.end_user.family_name + order.end_user.first_name %></td>
+  			    <td><%= order.count %>個
             <!-- <% sum = 0 %>
             <% order.order_products.each do |order_product| %>
             <% sub_total = order_product.quantity %>

@@ -19,9 +19,13 @@
 			    <tr>
 				    <td><%= product.id %></td>
 				    <td><%= link_to product.name, admin_product_path(product) %></td>
-				    <td><%= product.price %></td>
+				    <td><%= product.price %>円</td>
 				    <td><%= product.genre.name %></td>
-				    <td><%= product.is_soldout %></td>
+				    <% if product.is_soldout == true %>
+						<td><p>販売停止中</p></td>
+					  <% else %>
+						<td><p>販売中</p></td>
+					  <% end %>
 			    </tr>
 		      <% end %>
 	      </tbody>
