@@ -54,9 +54,9 @@
 				    <% @order.order_products.each do |order| %>
 				    <tr>
 					    <td><%= order.product.name %></td>
-					    <td><%= order.price  * 1.1 .round%></td>
+					    <td><%= (order.price  * 1.1) .round%></td>
 					    <td><%= order.quantity %></td>
-						      <% sub_total = order.price * 1.1 .round * order.quantity %>
+						      <% sub_total = (order.price * 1.1) .round * order.quantity %>
 						      <% sum += sub_total %>
 					    <td><%= sub_total %></td>
 						    <div class="btn-group" >
