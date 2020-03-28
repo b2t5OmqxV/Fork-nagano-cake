@@ -12,4 +12,6 @@ class Product < ApplicationRecord
       Product.all
     end
   end
+
+  validates :name, :description, :price, :image,  presence: true
 end

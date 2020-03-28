@@ -1,4 +1,6 @@
-<h1>情報入力</h1>
+<div class="container">
+    <div class="row">
+      <h1><strong>情報入力</strong></h1>
 
 <%= form_with model: @order, url: order_check_path ,local: true, method: :get do |f| %>
 		<% if @order.errors.any? %>
@@ -17,8 +19,10 @@
         <h4>お届け先</h4>
         <label><%= f.radio_button :address_select, 1, {:checked => true}%>ご自身の住所</label><br>
         	<%= @end_user.zip_code%> <%=  @end_user.address %> <%= str = @end_user.family_name << @end_user.first_name %><br>
-        <label><%= f.radio_button :address_select, 2 %>登録済住所から選択</label><br>
+        <% unless @end_user.shipping_addresses.count == 0 %>
+            <label><%= f.radio_button :address_select, 2 %>登録済住所から選択</label><br>
         	<%= f.collection_select :address_id, @end_user.shipping_addresses, :id,:address %><br>
+        <% end %>
         <label><%= f.radio_button :address_select, 3 %>新しいお届け先</label><br>
             <%= fields_for(@shipping_address) do |address| %>
                 <p>郵便番号(ハイフンなし)</p><%= address.text_field :zip_code %>
@@ -26,5 +30,5 @@
                 <p>宛名</p><%= address.text_field :name %><br>
                 <%= f.hidden_field :end_user_id, :value => @end_user.id %>
             <% end %>
-        <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+                <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
 <% end %>

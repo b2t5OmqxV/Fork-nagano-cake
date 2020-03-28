@@ -54,11 +54,11 @@
 				    <% @order.order_products.each do |order| %>
 				    <tr>
 					    <td><%= order.product.name %></td>
-					    <td><%= (order.price  * 1.1) .round%></td>
-					    <td><%= order.quantity %></td>
+					    <td><%= (order.price  * 1.1) .round%>円</td>
+					    <td><%= order.quantity %>個</td>
 						      <% sub_total = (order.price * 1.1) .round * order.quantity %>
 						      <% sum += sub_total %>
-					    <td><%= sub_total %></td>
+					    <td><%= sub_total %>円</td>
 						    <div class="btn-group" >
 						      <%= form_with model: order, url: admin_order_product_path, local: true do |f| %>
 						      <td>

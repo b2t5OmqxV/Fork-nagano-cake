@@ -18,7 +18,7 @@
         <p style="display: inline-block;">
           </style>ジャンル</p>
         <%= f.text_field :name %>
-        <label><%= f.radio_button :is_invalid, false %>有効</label>
+        <label><%= f.radio_button :is_invalid, false, {:checked => true} %>有効</label>
         <label><%= f.radio_button :is_invalid, true %>無効</label>
         <%= f.submit "新規追加登録", class:"btn btn-info" %>
         <% end %><br>
