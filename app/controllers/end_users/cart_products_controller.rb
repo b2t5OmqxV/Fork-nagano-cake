@@ -14,8 +14,13 @@ before_action :authenticate_end_user!
 
 	def update
 		cart_product = CartProduct.find(params[:id])
-		cart_product.update(cart_product_params)
-		redirect_to request.referer
+		if params[:cart_product][:quantity] == "0"
+			cart_product.destroy
+			redirect_to request.referer
+		else
+			cart_product.update(cart_product_params)
+			redirect_to request.referer
+		end
 	end
 
 	def destroy
