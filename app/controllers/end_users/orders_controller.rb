@@ -41,7 +41,11 @@ class EndUsers::OrdersController < ApplicationController
 	end
 
 	def order_check
-		@end_user = EndUser.find(current_end_user.id)
+		if params[:order][:address_select] == "3" && params[:shipping_address][:zip_code].empty? && params[:shipping_address][:address].empty? && params[:shipping_address][:name].empty?
+			redirect_to input_path, notice: "配送先を入力して下さい"
+		else
+			@end_user = EndUser.find(current_end_user.id)
+		end
 	end
 
 
