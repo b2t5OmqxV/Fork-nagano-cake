@@ -1,0 +1,51 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-2">
+		  <h1><strong>会員詳細画面</strong></h1><br>
+
+		    <table>
+          <tr>
+            <th>顧客ID</th>
+            <td><%= @end_user.id %>
+            
+			        <% if @end_user.is_unsubscribed == false %>
+				      有効会員
+			        <% else %>
+				      退会済会員
+			        <% end %>
+			      </td>
+			    </tr>
+			    <tr>
+			    	<th>氏名</th>
+			    	<td>
+			        <%= @end_user.family_name %><%=@end_user.first_name %>
+			      </td>
+			    </tr>
+			    <tr>
+			      <th>フリガナ</th>
+			      <td>
+			        <%= @end_user.family_name_kana %><%= @end_user.first_name_kana %>
+			      </td>
+			    </tr>
+			    <tr>
+			    	<th>郵便番号</th>
+			    	<td><%= @end_user.zip_code %></td>
+			    </tr>
+			    <tr>
+			    	<th>住所</th>
+			    	<td><%= @end_user.address %></td>
+			    </tr>
+			    <tr>
+            <th>電話番号</th>
+            <td><%= @end_user.phone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+			      <td><%= @end_user.email %></td>
+			    </tr>
+			  </table><br>
+			  <%= link_to "編集する", edit_admin_end_user_path(@end_user.id),class:"btn btn-info" %>
+			  <%= link_to "注文履歴一覧を見る", admin_orders_path(end_user_id: @end_user.id),class:"btn btn-info" %>
+   </div>
+	</div>
+</div>

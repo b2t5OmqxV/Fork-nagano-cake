@@ -1,0 +1,92 @@
+<div class="container">
+	<div class="row">
+	  <div class="col-xs-10 col-xs-offset-2">
+		  <% if @end_user.errors.any? %>
+			<h3><%= @end_user.errors.count %>error occurrence</h3>
+			  <ul>
+				  <% @end_user.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				  <% end %>
+			  </ul>
+		  <% end %>
+
+		  <h1><strong>会員情報編集画面</strong></h1><br>
+		    <%= form_for(@end_user, url: admin_end_user_path) do |f| %>
+        <table>
+          <tr>
+			      <th>会員ID</th>
+			      <td><%= @end_user.id %></td>
+			    </tr>
+			    <tr>
+			    	<th>氏名</th>
+			    	<td>
+			        <div class="field">
+				      <%= f.text_field :family_name %>
+				      <%= f.text_field :first_name %>
+			        </div>
+			      </td>
+			    </tr>
+			    <tr>
+			    	<th>フリガナ</th>
+			    	<td>
+			        <div class="field">
+				      <%= f.text_field :family_name_kana %>
+				      <%= f.text_field :first_name_kana %>
+			        </div>
+			      </td>
+			    </tr>
+          <tr>
+          	<th>郵便番号</th>
+          	<td>
+			        <div class="field">
+				      <%= f.text_field :zip_code %>
+			        </div>
+			      </td>
+			    </tr>
+			    <tr>
+			    	<th>住所</th>
+			    	<td>
+			        <div class="field">
+							<%= f.text_field :address %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>電話番号</th>
+						<td>
+							<div class="field">
+							<%= f.text_field :phone_number %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>メールアドレス</th>
+						<td><%= f.text_field :email %></td>
+					</tr>
+					<tr>
+						<th>会員ステータス<th>
+						<% if @end_user.is_unsubscribed == false %>
+						  <label><%= f.radio_button :is_unsubscribed, false, {:checked => true} %>有効</label>
+        		  <label><%= f.radio_button :is_unsubscribed, true %>退会</label>
+        	  <% else %>
+        		  <label><%= f.radio_button :is_unsubscribed, false %>有効</label>
+        		  <label><%= f.radio_button :is_unsubscribed, true, {:checked => true} %>退会</label>
+        	  <% end %>
+          </tr>
+        </table><br>
+           <%= f.submit "変更を保存する", class:"btn btn-info" %>
+		    <% end %>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

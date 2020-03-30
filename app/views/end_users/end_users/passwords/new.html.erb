@@ -1,0 +1,20 @@
+  <div class="container">
+    <div class="row">
+
+    <h1><strong>パスワードを忘れてしまった方へ</strong></h1><br>
+    <p>以下の欄に登録したメールアドレスをご入力ください。<br>
+       パスワード再設定について、メールでご連絡いたします。
+    </p><br>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :Eメール %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div><br>
+
+    <div class="actions">
+      <%= f.submit "パスワード再設定メールを送る", class:"btn btn-primary" %>
+    </div>
+    <% end %>

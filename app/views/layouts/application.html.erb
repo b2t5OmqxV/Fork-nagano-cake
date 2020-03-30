@@ -4,12 +4,93 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body role="document" data-spy="scroll" data-target="#ScrollSpy" data-offset="1" id="top">
+    <div id="ScrollSpy">
+      <header>
+            <nav class="navbar bg-option navbar-fixed-top">
+                <div class="container-fluid">
+                    <%= link_to root_path do %>
+                      <%= image_tag "logo.jpg", :size => '150x100' %>
+                    <% end %>
+
+                    <ul class="nav navbar-nav navbar-right">
+                      <% if admin_signed_in? %>
+                        <li>
+                          <i class="fas fa-store"></i><span><%= link_to "商品一覧",admin_products_path, class: "btn btn-default" %></span>
+                        </li>
+                        <li>
+                          <i class="fas fa-address-card"></i><span><%= link_to "会員一覧",admin_end_users_path, class: "btn btn-default" %></span>
+                        </li>
+                        <li>
+                          <i class="fas fa-history"></i><span><%= link_to "注文履歴一覧",admin_orders_path, class: "btn btn-default" %></span>
+                        </li>
+                        <li>
+                          <i class="fas fa-list"></i><span><%= link_to "ジャンル管理一覧",admin_genres_path, class: "btn btn-default" %></span>
+                        </li>
+                        <li>
+                          <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_admin_session_path, class: "btn btn-default", method: :delete %></span>
+                        </li>
+                                    <!-- 検索ボックスのフォームです -->
+                               <!-- <form class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search </button>
+                                    </form> -->
+                      <%= render "admin/searches/searchform" %>
+
+                      <% elsif end_user_signed_in? %>
+
+                        <p class="text-center">
+                          <i class="fas fa-child fa-spin fa-lg icon-color"></i>ようこそ、<%= current_end_user.family_name %><%= current_end_user.first_name %>さん!
+                        </p>
+
+                        <li>
+                          <i class="fas fa-user"></i><span><%= link_to "マイページ",my_page_path, class: "btn btn-default" %></span>
+                        </li>
+                        <li>
+                          <i class="fas fa-list"></i><span><%= link_to "商品一覧", products_path, class: "btn btn-default" %></span>
+                        </li>
+
+                        <li>
+                          <i class="fas fa-shopping-cart"></i><span><%= link_to "カート", cart_products_path, class: "btn btn-default" %></span>
+                        </li>
+
+                        <li>
+                          <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_end_user_session_path, class: "btn btn-default", method: :delete %></span>
+                        </li>
+
+                      <% elsif request.fullpath != "/admin/sign_in" %>
+                        <li>
+                          <i class="fas fa-list"></i><span><%= link_to "商品一覧", products_path, class: "btn btn-default" %></span>
+                        </li>
+                        <li>
+                          <i class="fas fa-user-plus"></i><span><%= link_to "新規登録", new_end_user_registration_path, class: "btn btn-default" %></span>
+                        </li>
+                        <li>
+                          <i class="fas fa-sign-in-alt"></i><span><%= link_to "ログイン", new_end_user_session_path, class: "btn btn-default" %></span>
+                        </li>
+                        <% else request.fullpath == "/admin/sign_in" %>
+                         <li>
+                          <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログイン",new_admin_session_path, class: "btn btn-default" %></span>
+                        </li>
+
+                      <% end %>
+
+                    </ul>
+                  </div>
+            </nav>
+
+      </header>
+      <div class="bg-option">
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
+
+

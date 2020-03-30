@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <h1><strong>ジャンル編集画面</strong></h1><br>
+      <div class="col-xs-10 col-xs-offset-2">
+        <%= form_for(@genre, url: admin_genre_path) do |f| %>
+		    <% if @genre.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= @genre.errors.count %>件のエラーが発生しました。</h2>
+              <ul>
+              <% @genre.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+              </ul>
+          </div>
+        <% end %>
+
+        <p style="display: inline-block;">
+            </style>ジャンル</p>
+          <%= f.text_field :name %>
+          <label><%= f.radio_button :is_invalid, false %>有効</label>
+          <label><%= f.radio_button :is_invalid, true %>無効</label>
+          <div class="col-xs-2 col-xs-offset-10">
+            <%= f.submit "変更を保存", class:"btn btn-info" %>
+            <% end %>
+          </div>
+      </div>
+  </div>
+</div>
